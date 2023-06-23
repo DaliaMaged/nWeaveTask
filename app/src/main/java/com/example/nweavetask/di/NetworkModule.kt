@@ -1,4 +1,4 @@
-package com.example.nweavetask.ui.di
+package com.example.nweavetask.di
 
 import com.example.data.APIServices.ApiService
 import dagger.Module
