@@ -1,8 +1,8 @@
 package com.example.domain.repos
 
-import com.example.domain.entities.ProductResponse
+import com.example.domain.entities.Products
 
 interface ProductRepo {
-    suspend fun getProductsFromRemote(): ProductResponse
-    suspend fun getProductsFromLocal(): ProductResponse
+    suspend fun getProductsFromRemote(): Products
+    suspend fun getProductsFromLocal(): Products
 }

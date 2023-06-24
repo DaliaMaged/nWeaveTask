@@ -1,6 +1,6 @@
 package com.example.nweavetask.di
 
-import com.example.data.APIServices.ApiService
+import com.example.data.api.ApiService
 import com.example.data.repoImplementation.ProductsImpl
 import com.example.domain.repos.ProductRepo
 import dagger.Module

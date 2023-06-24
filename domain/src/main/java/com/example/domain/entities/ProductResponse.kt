@@ -1,19 +1,26 @@
 package com.example.domain.entities
 
+import com.google.gson.annotations.SerializedName
+
+typealias Products = ArrayList<ProductResponse>
+
 data class ProductResponse(
-	val productResponse: List<ProductResponseItem?>? = null
+	@SerializedName("Product")
+	val products: Product,
+	val productMerchants: List<ProductMerchantsItem?>? = null
 )
 
 data class Product(
-	val price: String? = null,
-	val imageUrl: String? = null,
-	val name: String? = null,
-	val description: String? = null,
-	val id: String? = null,
-	val productTypeId: Any? = null,
-	val shoppingCartItemId: Any? = null,
-	val unitPrice: Any? = null,
-	val shoppingListItemId: Any? = null
+	@SerializedName("id")
+	val id: String,
+	@SerializedName("name")
+	val name: String,
+	@SerializedName("description")
+	val description: String,
+	@SerializedName("price")
+	val price: String,
+	@SerializedName("image_url")
+	val imageUrl : String
 )
 
 data class ProductMerchant(
@@ -45,10 +52,5 @@ data class ProductMerchantsItem(
 	val productMerchant: ProductMerchant? = null,
 	val merchant: Merchant? = null,
 	val merchantProduct: MerchantProduct? = null
-)
-
-data class ProductResponseItem(
-	val product: Product? = null,
-	val productMerchants: List<ProductMerchantsItem?>? = null
 )
 
