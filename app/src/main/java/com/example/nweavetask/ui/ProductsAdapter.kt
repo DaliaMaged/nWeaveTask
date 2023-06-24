@@ -1,6 +1,5 @@
 package com.example.nweavetask.ui
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.domain.entities.Product
 import com.example.domain.entities.ProductResponse
 import com.example.nweavetask.R
 
@@ -40,7 +38,6 @@ class ProductsAdapter(val onClick: (Int) -> Unit) :
             productName.text = item.products.name
             productPrice.text = item.products.price
             productDescription.text = item.products.description
-
         }
     }
 
@@ -49,7 +46,7 @@ class ProductsAdapter(val onClick: (Int) -> Unit) :
             oldItem: ProductResponse,
             newItem: ProductResponse
         ): Boolean {
-            return oldItem.products.id == oldItem.products.id
+            return oldItem.products.id == newItem.products.id
         }
 
         override fun areContentsTheSame(

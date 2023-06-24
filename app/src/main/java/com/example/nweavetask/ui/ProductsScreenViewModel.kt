@@ -1,6 +1,5 @@
 package com.example.nweavetask.ui
 
-import android.content.Context
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -30,7 +29,7 @@ class ProductsScreenViewModel @Inject constructor(
                 }
             }
         }
-    fun getCurrentProduct(id:Int):String{
-        return gson.toJson(products.value?.get(id) ?: "")
+    fun getCurrentProduct(index:Int):String{
+        return gson.toJson(products.value?.get(index) ?: "")
     }
 }
