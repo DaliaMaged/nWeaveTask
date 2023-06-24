@@ -1,5 +1,6 @@
 package com.example.nweavetask.ui
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,10 +11,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.domain.entities.Product
+import com.example.domain.entities.ProductResponse
 import com.example.nweavetask.R
 
 class ProductsAdapter(val onClick: (Int) -> Unit) :
-    ListAdapter<Product, ProductsAdapter.ProductsItemViewHolder>(ProductsDiffUtil()) {
+    ListAdapter<ProductResponse, ProductsAdapter.ProductsItemViewHolder>(ProductsDiffUtil()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductsItemViewHolder =
         ProductsItemViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.product_item_layout, parent, false)
@@ -33,26 +35,26 @@ class ProductsAdapter(val onClick: (Int) -> Unit) :
         private val productName: TextView = view.findViewById(R.id.product_name_tv)
         private val productDescription: TextView = view.findViewById(R.id.product_decription_tv)
 
-        fun bind(item: Product) {
-            Glide.with(itemView.context).load(item.imageUrl).into(productImage)
-            productName.text = item.name
-            productPrice.text = item.price
-            productDescription.text = item.description
+        fun bind(item: ProductResponse) {
+            Glide.with(itemView.context).load(item.products.imageUrl).into(productImage)
+            productName.text = item.products.name
+            productPrice.text = item.products.price
+            productDescription.text = item.products.description
 
         }
     }
 
-    class ProductsDiffUtil : DiffUtil.ItemCallback<Product>() {
+    class ProductsDiffUtil : DiffUtil.ItemCallback<ProductResponse>() {
         override fun areItemsTheSame(
-            oldItem: Product,
-            newItem: Product
+            oldItem: ProductResponse,
+            newItem: ProductResponse
         ): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem.products.id == oldItem.products.id
         }
 
         override fun areContentsTheSame(
-            oldItem: Product,
-            newItem: Product
+            oldItem: ProductResponse,
+            newItem: ProductResponse
         ): Boolean {
             return oldItem == newItem
         }
