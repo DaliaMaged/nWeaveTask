@@ -1,6 +1,7 @@
 package com.example.nweavetask.di
 
 import com.example.data.api.ApiService
+import com.example.data.db.ProductsDao
 import com.example.data.repoImplementation.ProductsImpl
 import com.example.domain.repos.ProductRepo
 import dagger.Module
@@ -12,7 +13,7 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 object RepoModule {
     @Provides
-    fun providesApi(apiService: ApiService) : ProductRepo{
-        return ProductsImpl(apiService)
+    fun providesApi(apiService: ApiService,appDB: ProductsDao) : ProductRepo{
+        return ProductsImpl(apiService,appDB)
     }
 }
