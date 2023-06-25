@@ -1,5 +1,7 @@
 package com.example.domain.entities
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 typealias Products = ArrayList<ProductResponse>
@@ -9,10 +11,10 @@ data class ProductResponse(
 	val products: Product,
 	val productMerchants: List<ProductMerchantsItem?>? = null
 )
-
+@Entity(tableName = "products")
 data class Product(
 	@SerializedName("id")
-	val id: String,
+@PrimaryKey	val id: String,
 	@SerializedName("name")
 	val name: String,
 	@SerializedName("description")
