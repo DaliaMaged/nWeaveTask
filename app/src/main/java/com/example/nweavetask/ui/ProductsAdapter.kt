@@ -36,7 +36,7 @@ class ProductsAdapter(val onClick: (Int) -> Unit) :
         fun bind(item: ProductResponse) {
             Glide.with(itemView.context).load(item.products.imageUrl).into(productImage)
             productName.text = item.products.name
-            productPrice.text = item.products.price
+            productPrice.text = "${item.products.price}$"
             productDescription.text = item.products.description
         }
     }
